@@ -5,9 +5,7 @@ This project is an example to build openshift cluster 4.12.x IPI with **Cilium C
 
 * This repository contains manifest for installing Cilium CNI which will be used as an patch during cluster installation.
 
-For More information please check official repository link for redhat crucible.
-
-https://github.com/redhat-partner-solutions/crucible
+For More information please check official repository link for redhat crucible in documentation section.
 
 
 ## Software Verison used in this Demo
@@ -20,7 +18,7 @@ Openshift Version :-
 
 `v4.12.4`
 
-Assisted Installed :-
+Assisted Installer :-
 
 'v2.12.1'
 
