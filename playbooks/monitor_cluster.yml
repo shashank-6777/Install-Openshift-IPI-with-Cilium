@@ -1,0 +1,7 @@
+---
+# file: monitor_cluster.yml
+- name: Monitoring cluster installation
+  hosts: bastion
+  gather_facts: False
+  roles:
+    - monitor_cluster

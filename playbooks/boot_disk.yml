@@ -1,0 +1,8 @@
+---
+# file: boot_disk.yml
+
+- name: Unmounting Assisted Installer Discovery ISO
+  hosts: bastion
+  gather_facts: False
+  roles:
+    - boot_disk

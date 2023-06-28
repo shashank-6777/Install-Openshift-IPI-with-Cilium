@@ -1,0 +1,45 @@
+---
+- name: Play to populate image_hashes for relevant images
+  hosts: localhost
+  vars:
+    destination_hosts:
+      - assisted_installer
+  pre_tasks:
+    - name: pre-compute need to get hashes
+      set_fact:
+        run_get_hash: "{{ image_hashes | default({}) | length == 0  }}"
+  roles:
+    - role: get_image_hash
+      when: run_get_hash
+
+- name: Deploy OpenShift Assisted Installer On Prem
+  hosts: assisted_installer
+  roles:
+    - role: setup_assisted_installer
+      when: SETUP_ASSISTED_INSTALLER == True
+  vars:
+    SETUP_ASSISTED_INSTALLER: "{{ setup_assisted_installer | default(True) }}"
+  post_tasks:
+    - name: Wait for up to 60 minutes for the assisted installer to come online
+      uri:
+        url: "http://{{ ansible_host }}:8090/ready"
+        method: GET
+        status_code: [200, 201]
+      register: result
+      until: result is succeeded
+      retries: 120
+      delay: 30
+      delegate_to: bastion
+      when: SETUP_ASSISTED_INSTALLER == True
+
+    - name: Wait for up to 60 minutes for the assisted installer image service to come online
+      uri:
+        url: "http://{{ ansible_host }}:8888/health"
+        method: GET
+        status_code: [200, 201]
+      register: result
+      until: result is succeeded
+      retries: 120
+      delay: 30
+      delegate_to: bastion
+      when: SETUP_ASSISTED_INSTALLER == True

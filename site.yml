@@ -1,0 +1,11 @@
+---
+- import_playbook: playbooks/display_deployment_plan.yml
+
+#- import_playbook: deploy_prerequisites.yml
+
+- import_playbook: deploy_cluster.yml
+
+- import_playbook: post_install.yml
+
+- import_playbook: deploy_day2_workers.yml
+  when: not ((use_agent_based_installer | default(false)) | bool)

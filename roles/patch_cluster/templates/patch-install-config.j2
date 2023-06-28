@@ -1,0 +1,22 @@
+imageContentSources:
+- mirrors:
+  - {{ mirror_registry }}/ocp4/openshift4
+  source: quay.io/openshift-release-dev/ocp-release
+- mirrors:
+  - {{ mirror_registry }}/ocp4/openshift4
+  source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
+- mirrors:
+  - {{ mirror_registry }}/ocpmetal
+  source: quay.io/edge-infrastructure
+- mirrors:
+  - {{ mirror_registry }}/edge-infrastructure
+  source: quay.io/edge-infrastructure
+- mirrors:
+  - eBPF.cluster.test.nfvi.localdomain:5000/namespace-replace-target
+  source: registry.redhat.io
+- mirrors:
+  - eBPF.cluster.test.nfvi.localdomain:5000/namespace-replace-target
+  source: registry.connect.redhat.com
+additionalTrustBundle: |
+{{ mirror_certificate.split("\n") | map("regex_replace", "^(?!\s{4})", "    ") | list | join("\n") }}
+sshKey: {{ ssh_public_key }}

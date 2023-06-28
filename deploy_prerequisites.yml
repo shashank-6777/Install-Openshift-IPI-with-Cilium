@@ -1,0 +1,26 @@
+---
+- import_playbook: prereq_facts_check.yml
+
+- name: Play to populate image_hashes for relevant images
+  hosts: localhost
+  roles:
+    - get_image_hash
+
+- import_playbook: playbooks/deploy_ntp.yml
+
+- import_playbook: playbooks/deploy_http_store.yml
+
+- import_playbook: playbooks/create_vms.yml
+  vars:
+    nodes_to_process: "{{ groups['masters'] + groups['workers'] | default([]) }}"
+
+- import_playbook: playbooks/deploy_tftp.yml
+
+- import_playbook: playbooks/deploy_dns.yml
+
+- import_playbook: playbooks/deploy_registry.yml
+
+- import_playbook: playbooks/deploy_assisted_installer_onprem.yml
+  when: not ((use_agent_based_installer | default(false)) | bool)
+
+- import_playbook: playbooks/deploy_sushy_tools.yml

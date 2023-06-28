@@ -1,0 +1,6 @@
+- name: Create cluster and generate Assisted Installer Discovery ISO
+  hosts: bastion
+  gather_facts: False
+  roles:
+    - create_cluster
+    - patch_cluster

@@ -1,0 +1,5 @@
+---
+- name: Get kubeconfig
+  hosts: bastion
+  roles:
+    - post_install
