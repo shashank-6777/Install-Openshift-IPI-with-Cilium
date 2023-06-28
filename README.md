@@ -52,7 +52,7 @@ _Red Hat Ansible Engine 2.9 for RHEL 8 x86_64_
 * Cilium CNI manifest are present in crucible folder and image path are updated according to your ENV you can download these manifest from cilium.io according to your required version.
 
 ```bash
-  STEP 3:- Before running below playbook please confirm below mentioned points.
+  STEP 3:- Run below playbook.
   
   
   # ansible-playbook -i inventory.yml site.yml -e "@inventory.vault.yml" 
