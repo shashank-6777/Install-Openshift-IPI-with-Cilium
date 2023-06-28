@@ -20,7 +20,7 @@ Openshift Version :-
 
 Assisted Installer :-
 
-'v2.12.1'
+`v2.12.1`
 
 
 ## Deployment
