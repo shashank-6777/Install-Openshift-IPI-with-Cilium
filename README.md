@@ -1,5 +1,5 @@
 # Crucible: OpenShift 4 Management Cluster with Cilium CNI.
-This project is an example to build openshift cluster 4.12.x IPI with **Cilium CNI**, My Env have no inetrnet connectivity so i will prepeare my registry with required images on a machine having internet then we will use that registry for this demoA brief description of what this project does and who it's for this demo..
+This project is an example to build openshift cluster 4.12.x IPI with **Cilium CNI**, My Env have no internet connectivity so i will prepeare my registry with required images on a machine having internet then we will use that registry for this demo..!
 
 * This repository contains playbooks for automating the creation of an OpenShift Container Platform cluster on premise on Virtual and Bare Metal deployments have been tested in restricted network environments where nodes do not have direct access to the Internet.
 
