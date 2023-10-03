@@ -47,7 +47,7 @@ _Red Hat Ansible Engine 2.9 for RHEL 8 x86_64_
 ```
 **Before moving to next step please confirm below mentioned points.**
 
-* inentory.yml & inventory.vault.yml file under crucible folder should be updated with right data/information.
+* inventory.yml & inventory.vault.yml file under crucible folder should be updated with right data/information.
 * pull-secrect.txt should be present inside the crucible folder.
 * Cilium CNI manifest are present in crucible folder and image path are updated according to your ENV you can download these manifest from cilium.io according to your required version.
 
